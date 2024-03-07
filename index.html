@@ -2,129 +2,58 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diseño Responsivo</title>
-  <link rel="stylesheet" href="styles/reset.css">
-  <link rel="stylesheet" href="styles/styles.css">
-  <style>
-    /* Estilos generales */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    /* Estilos para el contenedor */
-    .container {
-      max-width: 1200px;
-      /* Ancho máximo del contenedor */
-      margin: 0 auto;
-      /* Centrar el contenedor */
-      padding: 15px;
-      /* Espacio interno del contenedor */
-      box-sizing: border-box;
-    }
-
-    /* Estilos para las filas */
-    .row {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 -15px;
-      /* Negativo para compensar el espacio agregado en los lados de las columnas */
-    }
-
-    /* Estilos para las columnas */
-    .col-sm-4 {
-      flex: 0 0 calc(33.33% - 30px);
-      /* Cada columna ocupa aproximadamente el 33.33% del ancho del contenedor con un espacio entre ellas de 15px */
-      padding: 15px;
-      /* Espacio interno de la columna */
-      box-sizing: border-box;
-    }
-
-    .col-sm-8 {
-      flex: 0 0 calc(66.66% - 30px);
-      /* Cada columna ocupa aproximadamente el 66.66% del ancho del contenedor con un espacio entre ellas de 15px */
-      padding: 15px;
-      /* Espacio interno de la columna */
-      box-sizing: border-box;
-    }
-
-    /* Estilos de ejemplo para las columnas */
-    .col-sm-4 {
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-    }
-
-    .col-sm-8 {
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-    }
-
-    /* Clearfix para corregir el colapso de filas */
-    .clearfix::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Estilos para dispositivos pequeños */
-    @media (max-width: 768px) {
-
-      .col-sm-4,
-      .col-sm-8 {
-        flex: 0 0 calc(100% - 30px);
-        /* Cada columna ocupa aproximadamente el 100% del ancho del contenedor con un espacio entre ellas de 15px */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de Diseño Responsivo</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/measures.css">
+   
 </head>
-
 <body>
 
-  <div class="contenedor">
-    <div class="form-box">
-      <div class="head">
-        <div class="circle"></div>
-        <div class="img">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdppYZuxHucmDJI-gpP5fOKjnCnHz6J0VVw&usqp=CAU"
-            alt="">
-        </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div style="display: flex; justify-content: center;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdppYZuxHucmDJI-gpP5fOKjnCnHz6J0VVw&usqp=CAU"
+                        alt="">
+                </div>
+                <div>
+                    <h3>Sharon Lopez</h3>
+                    <p>Soy Venezolana, tengo 27 años. Durante la pandemia estudie marketing, python y base da datos.
+                        Encontre tanto interes en la programacion que me gustaria crecer profesionalmente en este campo
+                        It.</p>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div style="display: flex; justify-content: center;">
+                    <img class="pic" src="styles/src/CSS.png" alt="CCS">
+                    <img class="pic" src="styles/src/JavaScript-logo-600x375.png"alt="JS">
+                    <img class="pic" src="styles/src/unnamed.png"alt="html">
+                </div>
 
-      <div class="description">
-        <h3>Sharon Lopez</h3>
-        <p>Soy Venezolana, tengo 27 años. Durante la pandemia estudie marketing, python y base da datos. Encontre tanto
-          interes en la programacion que me gustaria crecer profesionalmente en este campo It.</p>
-      </div>
+
+                <div style="display: flex; justify-content: center; margin-top: 20px;">
+                    <form action="">
+                        <div class="form_box">
+                            <input type="text" class="form_input" id="textActivity" placeholder=""> 
+                            <label for="textActivity" class="form_label">Actividad</label>
+                        </div>
+                        <div class="form_box">
+                            <input type="text"class="form_input" id="textDescription" placeholder="">
+                            <label for="textDescription" class="form_label" >Descripcion</label>
+                        </div>
+                        <div class="form_box">
+                            <input type="text"class="form_input" id="linkPic" placeholder="">
+                            <label for="linkPic" class="form_label" >Link</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Puedes agregar más filas con columnas aquí -->
     </div>
-
-    <div class="logos">
-      <img
-        src="https://as1.ftcdn.net/v2/jpg/05/27/97/74/1000_F_527977463_hcQAYoMqDE17JUYji9J9bVIV6CWMsFuG.jpg"
-        alt="icono_facebook">
-    </div>
-
-    <div class="form-sito">
-      <form action="" class="input_group">
-        <div class="form-group">
-            <input type="text" class="input_field" name="password" placeholder="Actividad">
-        </div>
-        <div class="form-group">
-            <input type="text" class="input_field" name="nombreApellido" placeholder="Descripcion">
-        </div>
-        <div class="form-group">
-            <input type="link" class="input_field" name="correo" placeholder="Imagen">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="submit-btn">Send</button>
-        </div>
-    </form> 
-    </div>
-
-  </div>
-
 
 </body>
 
