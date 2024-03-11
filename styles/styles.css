@@ -1,147 +1,150 @@
-*{
+body {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #000000;
-}
-
-.contenedor{
-    height: 100%;
-    width: 100%;
-    background-image: url(https://st2.depositphotos.com/1035451/6406/v/450/depositphotos_64063357-stock-illustration-abstract-future-technology-background.jpg);
-    background-position: center;
-    background-size: cover;
-    position: absolute;
-}   
-
-.form-box{
-    width: 340px;
-    height: 400px;
-    position: relative;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    top : 15%;
-    left : 20px;
-}
-
-.form-box .head {
-    width: 125px;
-    height: 100%;
-    position: relative;
-    
-}
-
-.form-box .head .circle{
-    width: 320px;
-    height: 300px;
-    border-radius: 50%;
-    position: absolute;
-    background: #137d83;
-    bottom: 0;
-    top: -45%;
-    left: 10px;
-}
-
-
-.form-box .head .img{
-    width: 125px;
-    height: 125px;
-    border-radius: 50%;
-    bottom: -30%;
-    position: absolute;
-    background: #ffff;
-    padding: 5px;
-    left: 132%;
-    transform: translate(-50%);
-    top: 5%;
-}
-
-.form-box .head .img img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.form-box .description {
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    top : 5%;
-    
-}
-
-.form-box .description p {
-    margin-top : 5%;
-    text-align: center;
-    right: -20%;
-   
-}
-
-.form-box .description h3{
-    padding-top: 60%;
-    padding-left: 36%;
-}
- 
-.logos{
+    font-family: Arial, sans-serif;
+    background-image: url(https://wallpapers.com/images/hd/blue-watercolor-background-muil0tf71cjhe6kv.jpg);
     display: flex;
     justify-content: center;
-    align-items: center;
-}
+  }
 
-.logos img{
-    border: 0;
-    background-color: #fff;
-    text-decoration: none;
+  /* Estilos para el contenedor */
+  .container {
+    margin-top: 100px;
+    max-width: 80%;
+    /* Ancho máximo del contenedor */
+    padding: 15px;
+    /* Espacio interno del contenedor */
+    box-sizing: border-box;
+  }
+
+  /* Estilos para las filas */
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    /* Negativo para compensar el espacio agregado en los lados de las columnas */
+  }
+
+  /* Estilos para las columnas */
+  .col-sm-4 {
+    flex: 0 0 calc(33.33%);
+    /* Cada columna ocupa aproximadamente el 33.33% del ancho del contenedor con un espacio entre ellas de 15px */
+    padding: 15px;
+    /* Espacio interno de la columna */
+    box-sizing: border-box;
+  }
+
+  .col-sm-8 {
+    flex: 0 0 calc(66.66%);
+    /* Cada columna ocupa aproximadamente el 66.66% del ancho del contenedor con un espacio entre ellas de 15px */
+    padding: 15px;
+    /* Espacio interno de la columna */
+    box-sizing: border-box;
+  }
+
+  /* Estilos de ejemplo para las columnas */
+  .col-sm-4 {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+  }
+
+  .col-sm-8 {
+    background-color: transparent;
+  }
+
+  /* Clearfix para corregir el colapso de filas */
+  .clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .pic {
+    background-size:cover;
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 150px;
     height: 150px;
-    color: #fff;
-    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
-    font-size: 1.3rem;
-    left: 650px;
-    top: 100px;
+    margin: 60px 20px 80px 20px
+ 
+  }
+
+  .form_input{
+    width: 60%;
+    margin: 0 auto;
+    font-size: 20px;
+    display: block;
+    padding:.5rem 2rem;
+    border-radius: 5px;
+    border: 0;
+    outline: solid 2px rgb(143,143,143);
+  }
+
+  .form_label{
+    font-size: 20px;
+    transition:all .5s;
     position: absolute;
-}
+    top:25px;
+    left:9rem;
+    background: white;
+    padding: 0 .5rem;
+    color: rgb(143,143,143)
+  }
 
-.input_group{
-    top: 180px;
-    position: absolute;
-    width: 280px;
-    transition: 0.8s;
-}
+  .form_box{
+    margin:0 auto;
+    position: relative;
+    padding: 1rem;
+  }
 
-.input_field{
-    width: 100%;
-    padding: 10px 0;
-    margin: 5px 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
-    border-bottom: 2px solid#000000;
-    outline: none;
-    background: transparent;
+  .form_input:focus{
+    outline:solid 2px #4285f4;
+  }
 
-}
+  .form_input:focus+.form_label{
+    transform: translateY(-1.2rem);
+    font-size: 20px;
+    color: #4285f4;
+  }
 
-.submit-btn{
-    width: 85% ;
-    padding: 5% 30px;
-    cursor:pointer;
-    display:block;
-    margin:auto;
-    background: rgba(218, 15, 0, 0.671) ;
-    border: 0px;
-    outline: none;
-    border-radius: 30px;
+  .form_input:not(:placeholder-shown)+.form_label{
+    transform: translateY(-1.2rem);
+    transition: .5s;
+    font-size: 15px;
+    border-radius: 20px;
+  }
 
-}
+  .fullname{
+    font-size: 25px;
+    margin: 20px 0px 20px 0px;
+    text-align: center;
+  }
 
-.form-sito {
-    left: 700px;
-    top: 150px;
-    position: absolute;
-}
+  .biography{
+    font-size: 20px;
+    text-align:left;
+    padding: .8rem;
+  }
+
+  .deleteId{
+    width: 10%;
+    font-size: 12px;
+    display: block;
+    text-align:left;
+    top:25px;
+    left:9rem;
+    outline: solid 2px rgb(143,143,143);
+
+  }
+
+
+  /* Estilos para dispositivos pequeños */
+  @media (max-width: 768px) {
+
+    .col-sm-4,
+    .col-sm-8 {
+      flex: 0 0 calc(100% - 30px);
+      /* Cada columna ocupa aproximadamente el 100% del ancho del contenedor con un espacio entre ellas de 15px */
+    }
+  }
