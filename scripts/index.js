@@ -24,7 +24,7 @@ class Repository {
             document.getElementById('title').value,
             document.getElementById('description').value,
             document.getElementById('impUrl').value,
-            document.getElementById('deleteId').value,
+            document.getElementById('id').value,
             );
     
         this.activities.push(activity);
@@ -34,7 +34,7 @@ class Repository {
     
     deleteActivity() {
         
-        const deleteId = parseInt(document.getElementById('deleteId').value);
+        const deleteId = parseInt(document.getElementById('id').value);
         const index = this.activities.findIndex(activity => activity.id === deleteId);
       
         if (index !== -1) {

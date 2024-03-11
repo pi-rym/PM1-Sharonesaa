@@ -75,12 +75,13 @@ body {
     margin: 0 auto;
     font-size: 20px;
     display: block;
-    padding:.5rem 2rem;
+    padding:.4rem 2rem;
     border-radius: 5px;
     border: 0;
     outline: solid 2px rgb(143,143,143);
   }
 
+ 
   .form_label{
     font-size: 20px;
     transition:all .5s;
@@ -97,7 +98,7 @@ body {
     position: relative;
     padding: 1rem;
   }
-
+ 
   .form_input:focus{
     outline:solid 2px #4285f4;
   }
@@ -127,16 +128,28 @@ body {
     padding: .8rem;
   }
 
+  .delete_box{
+    margin-top: 5%;
+    position: relative;
+    text-align: right;
+  }
+
   .deleteId{
-    width: 10%;
-    font-size: 12px;
-    display: block;
-    text-align:left;
-    top:25px;
-    left:9rem;
-    outline: solid 2px rgb(143,143,143);
+    font-size: 13px;
+    border-radius: 4px;
+    padding:0.2rem;
+    width:100px;
+    outline: solid 2px rgb(143,143,143)
 
   }
+  .delete_id{
+    font-size: 13px;
+    border-radius: 4px;
+    padding:0.2rem -5rem;
+    outline: solid 2px rgb(143,143,143);
+    color: #ff3737
+  }
+
 
 
   /* Estilos para dispositivos pequeños */

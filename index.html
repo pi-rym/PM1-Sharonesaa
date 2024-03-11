@@ -34,7 +34,6 @@
                     <img class="pic" src="styles/src/unnamed.png"alt="html">
                 </div>
 
-
                 <div>
                     <form action="" id="activityForm">
                         <div class="form_box">
@@ -55,9 +54,9 @@
                             <button style="width: 25%;" class="form_input" type="button" onclick="repository.createActivity()">Agregar</button>
                         </div>
                     </form>
-                    <div>
-                        <input type="text" id="deleteId" placeholder="ID a eliminar">
-                        <button style="width: 20%;" class="deleteId" type="button" onclick="repository.deleteActivity()">Eliminar Actividad</button>
+                    <div class="delete_box">
+                        <input type="text" class="deleteId" id="id" placeholder="ID de Actividad">
+                        <button class="delete_id" type="button" onclick="repository.deleteActivity()">Eliminar</button>
                       </div>
                 </div>
             </div>
