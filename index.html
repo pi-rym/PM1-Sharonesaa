@@ -13,7 +13,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="colRight">
                 <div style="display: flex; justify-content: center;">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdppYZuxHucmDJI-gpP5fOKjnCnHz6J0VVw&usqp=CAU"
                         alt="">
@@ -27,7 +27,7 @@
                         </p>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="colLeft">
                 <div style="display: flex; justify-content: center;">
                     <img class="pic" src="styles/src/CSS.png" alt="CCS">
                     <img class="pic" src="styles/src/png-transparent-javascript-logo-angularjs-nodejs-computer-programming-web-development-computer-software-jquery-yellow.png"alt="JS">
@@ -38,7 +38,7 @@
                     <form action="" id="activityForm">
                         <div class="form_box">
                             <input type="text" class="form_input" id="title" placeholder=""> 
-                            <label for="title" class="form_label">Actividad</label>
+                            <label for="title" class="form_label">Actividad Favorita</label>
                         </div>
                         <div class="form_box">
                             <textarea
@@ -46,7 +46,7 @@
                             <label for="description" class="form_label" >Descripcion</label> 
                         </div>
                         <div class="form_box">
-                            <input type="url"class="form_input" id="impUrl" placeholder="">
+                            <input type="url"class="form_input" id="imgUrl" placeholder="">
                             <label for="impUrl" class="form_label" >Link</label>
                         </div>
                         <div class="form_box">
@@ -54,15 +54,14 @@
                             <button style="width: 25%;" class="form_input" type="button" onclick="repository.createActivity()">Agregar</button>
                         </div>
                     </form>
-                    <div class="delete_box">
-                        <input type="text" class="deleteId" id="id" placeholder="ID de Actividad">
-                        <button class="delete_id" type="button" onclick="repository.deleteActivity()">Eliminar</button>
-                      </div>
                 </div>
             </div>
         </div>
 
-        <!-- Puedes agregar más filas con columnas aquí -->
+        <!-- Nuevo contenedor para las tarjetas de actividad -->
+        <div id="activityCardsContainer" class="container">
+            <!-- Las tarjetas de actividad se agregarán aquí -->
+        </div>
     </div>
 
     <script src="./scripts/index.js"></script>
