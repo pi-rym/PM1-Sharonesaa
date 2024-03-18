@@ -2,69 +2,86 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de Diseño Responsivo</title>
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="styles/styles.css">
-   
+
 </head>
+
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="colRight">
-                <div style="display: flex; justify-content: center;">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdppYZuxHucmDJI-gpP5fOKjnCnHz6J0VVw&usqp=CAU"
-                        alt="">
-                </div>
-                <div>
-                    <h1 class="fullname">Sharon Lopez</h1>
-                    <p class="biography"> Soy venezolana y resido en argentina, tengo 27 años, profesional en enfermería y durante la pandemia por el tiempo libre
-                        comencé a realizar distintos cursos que ofrecía el gobierno de forma gratuita (operador en herramientas de marketing digital, python, base de 
-                        datos, testing), comencé a desarrollar bastante interés por el mundo IT y así cada día quería aprender más<br>Hoy me encuentro trabajando como 
-                        community manager y con el deseo/objetivo de crecer profesionalmente como programadora.
-                        </p>
-                </div>
+        <div class="colLeft">
+            <div style="display: flex; justify-content: center;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKdppYZuxHucmDJI-gpP5fOKjnCnHz6J0VVw&usqp=CAU"
+                    alt="">
             </div>
-            <div class="colLeft">
-                <div style="display: flex; justify-content: center;">
-                    <img class="pic" src="styles/src/CSS.png" alt="CCS">
-                    <img class="pic" src="styles/src/png-transparent-javascript-logo-angularjs-nodejs-computer-programming-web-development-computer-software-jquery-yellow.png"alt="JS">
-                    <img class="pic" src="styles/src/unnamed.png"alt="html">
-                </div>
-
-                <div>
-                    <form action="" id="activityForm">
-                        <div class="form_box">
-                            <input type="text" class="form_input" id="title" placeholder=""> 
-                            <label for="title" class="form_label">Actividad Favorita</label>
-                        </div>
-                        <div class="form_box">
-                            <textarea
-                            cols="30" rows="5" class="form_input" id="description" placeholder=""></textarea>
-                            <label for="description" class="form_label" >Descripcion</label> 
-                        </div>
-                        <div class="form_box">
-                            <input type="url"class="form_input" id="imgUrl" placeholder="">
-                            <label for="impUrl" class="form_label" >Link</label>
-                        </div>
-                        <div class="form_box">
-                            <input type="hidden" id="activityId" value="">
-                            <button style="width: 25%;" class="form_input" type="button" onclick="repository.createActivity()">Agregar</button>
-                        </div>
-                    </form>
-                </div>
+            <div>
+                <h1 class="fullname">Sharon Lopez</h1>
+                <p class="biography"> Soy venezolana y resido en argentina, tengo 27 años, profesional en enfermería y
+                    durante la pandemia por el tiempo libre
+                    comencé a realizar distintos cursos que ofrecía el gobierno de forma gratuita (operador en
+                    herramientas de marketing digital, python, base de
+                    datos, testing), comencé a desarrollar bastante interés por el mundo IT y así cada día quería
+                    aprender más<br>Hoy me encuentro trabajando como
+                    community manager y con el deseo/objetivo de crecer profesionalmente como programadora.
+                </p>
             </div>
         </div>
+        <div class="colRight">
+            <div style="display: flex; justify-content: center;">
+                <img class="pic" src="styles/src/CSS.png" alt="CCS">
+                <img class="pic"
+                    src="styles/src/png-transparent-javascript-logo-angularjs-nodejs-computer-programming-web-development-computer-software-jquery-yellow.png"
+                    alt="JS">
+                <img class="pic" src="styles/src/unnamed.png" alt="html">
+            </div>
 
-        <!-- Nuevo contenedor para las tarjetas de actividad -->
-        <div id="activityCardsContainer" class="container">
-            <!-- Las tarjetas de actividad se agregarán aquí -->
+            <div>
+                <button type="button" style="width: 50%; margin: 40px; cursor: pointer; " class="btn" onclick="openPopup(0)">Ver actividades</button>
+            </div>
+
+            <div>
+                <form action="" id="activityForm">
+
+                    <div class="form_box">
+                        <input type="text" class="form_input" id="title" placeholder="">
+                        <label for="title" class="form_label">Actividad Favorita</label>
+                    </div>
+                    <div class="form_box">
+                        <textarea cols="30" rows="5" class="form_input" id="description" placeholder=""></textarea>
+                        <label for="description" class="form_label">Descripcion</label>
+                    </div>
+                    <div class="form_box">
+                        <input type="url" class="form_input" id="imgUrl" placeholder="">
+                        <label for="imgUrl" class="form_label">Link</label>
+                    </div>
+                    <div class="form_box">
+                        <input type="hidden" id="activityId" value="">
+                        <button type="button" class="btn" onclick="repository.createActivity()">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+    <div id="popup" class="popup">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="carousel">
+            <button onclick="prevSlide()" class="nav-btn">&lt;</button>
+            <div id="activityCardsContainer">
+            </div>
+            <button onclick="nextSlide()" class="nav-btn">&gt;</button>
         </div>
     </div>
 
     <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>
