@@ -15,7 +15,7 @@ class Repository {
   };
 
   getAllActivities() {
-    alert(this.activities);
+
     return (this.activities);
   }
 
@@ -180,3 +180,5 @@ function prevSlide() {
   }
   showCarouselItem(currentIndex);
 }
+
+module.exports = { Activity, Repository};

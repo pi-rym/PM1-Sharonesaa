@@ -39,17 +39,13 @@
                     alt="JS">
                 <img class="pic" src="styles/src/unnamed.png" alt="html">
             </div>
-
             <div>
-                <button type="button" style="width: 50%; margin: 40px; cursor: pointer; " class="btn" onclick="openPopup(0)">Ver actividades</button>
-            </div>
-
-            <div>
-                <form action="" id="activityForm">
-
+    
+                <form class="boxAct" action="" id="activityForm">
+                    <h1 class="fullname">Actividades Favoritas</h1>
                     <div class="form_box">
                         <input type="text" class="form_input" id="title" placeholder="">
-                        <label for="title" class="form_label">Actividad Favorita</label>
+                        <label for="title" class="form_label">Actividad</label>
                     </div>
                     <div class="form_box">
                         <textarea cols="30" rows="5" class="form_input" id="description" placeholder=""></textarea>
@@ -65,6 +61,12 @@
                     </div>
                 </form>
             </div>
+
+            <div>
+                <button type="button" class="btnHistory" onclick="openPopup(0)">Ver actividades agregadas</button>
+            </div>
+
+            
         </div>
     </div>
 
