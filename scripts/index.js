@@ -15,90 +15,97 @@ class Repository {
   };
 
   getAllActivities() {
-
     return (this.activities);
   }
 
-  createActivity() {
-    const id = this.id++;
-
+  createActivity(id, title, description, img){
     let activity = new Activity(
       id,
-      document.getElementById('title').value,
-      document.getElementById('description').value,
-      document.getElementById('imgUrl').value,
+      title,
+      description,
+      img,
     );
+    
+    this.activities.push(activity);
+  }
 
-    if (!title || !description || !imgUrl) {
+  buttonHandler() {
+    const id = this.id++;
+    const inputTitle = document.getElementById('title').value;
+    const inputDescription = document.getElementById('description').value;
+    const inputImg = document.getElementById('imgUrl').value;
+
+    if (!inputTitle || !inputDescription || !inputImg) {
       alert('Por favor completa todos los campos.');
       return; // Detener la ejecución de la función si falta algún campo
     }
 
-
-    this.activities.push(activity);
-
-    this.displayActivities(); // Llamar a la función para mostrar las tarjetas de actividad
+    this.createActivity(id, inputTitle, inputDescription, inputImg);
+   
+    this.transformActivities(); // Refrescar
 
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('imgUrl').value = '';
 
+    openPopup(document.querySelectorAll('.carousel-item').length - 1);
+
     // alert(`Actividad agregada:\n${JSON.stringify(activity)}`);
   }
 
-  displayActivities() {
+  createTags(activity) {
+
+    const {id, title, description, imgUrl} = activity;
+    
+    // Usar map() para crear las tarjetas de actividad
+    const card = document.createElement('div');
+    card.classList.add('carousel-item');
+    card.classList.add('activity-card');
+    card.id = `activity-${id}`; // Asignar un ID único a cada tarjeta de actividad
+
+    const titleHtml = document.createElement('h3');
+    titleHtml.innerHTML = title;
+
+    const descriptionHtml = document.createElement('p');
+    descriptionHtml.innerHTML = description;
+
+    const imageHtml = document.createElement('img');
+    imageHtml.src = imgUrl;
+    imageHtml.alt = title;
+
+    // Botón de eliminar
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Eliminar';
+    deleteBtn.classList.add('delete_id');
+    deleteBtn.type = 'button';
+    deleteBtn.onclick = () => this.deleteActivity(id); // Llamar a deleteActivity con el ID de la actividad
+    
+    // Agregar elementos a la tarjeta
+    card.appendChild(titleHtml);
+    card.appendChild(descriptionHtml);
+    card.appendChild(imageHtml);
+    card.appendChild(deleteBtn);
+    
+    return card;
+  }
+
+  transformActivities(){
+    
     const container = document.getElementById('activityCardsContainer');
     container.innerHTML = ''; // Limpiar el contenedor antes de agregar las tarjetas
 
-    // Usar map() para crear las tarjetas de actividad
-    const activityCards = this.activities.map(activity => {
-      const card = document.createElement('div');
-      card.classList.add('carousel-item');
-      card.classList.add('activity-card');
-      const activityId = activity.id; // Obtener el ID de la actividad
-      card.id = `activity-${activityId}`; // Asignar un ID único a cada tarjeta de actividad
-
-      const title = document.createElement('h3');
-      title.textContent = activity.title;
-
-      const description = document.createElement('p');
-      description.textContent = activity.description;
-
-      const image = document.createElement('img');
-      image.src = activity.imgUrl;
-      image.alt = activity.title;
-
-      // Agregar elementos a la tarjeta
-      card.appendChild(title);
-      card.appendChild(description);
-      card.appendChild(image);
-      // Botón de eliminar
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'Eliminar';
-      deleteBtn.classList.add('delete_id');
-      deleteBtn.type = 'button';
-      deleteBtn.onclick = () => this.deleteActivity(activityId); // Llamar a deleteActivity con el ID de la actividad
-      card.appendChild(deleteBtn);
-
-      return card;// Devolver la tarjeta como resultado del mapeo
+    this.activities.map(activity => {
+      container.append(this.createTags(activity));
     });
-
-
-    // Appendear todos los elementos HTML mapeados al contenedor
-    activityCards.forEach(card => {
-      container.appendChild(card);
-    });
-
-    openPopup(document.querySelectorAll('.carousel-item').length - 1);
 
   }
 
-  deleteActivity(activityId) {
-    const index = this.activities.findIndex(activity => activity.id === activityId);
+  deleteActivity(id) {
+    const index = this.activities.findIndex(activity => activity.id === id);
 
     if (index !== -1) {
       const deletedActivity = this.activities.splice(index, 1)[0];
-      const activityElement = document.getElementById(`activity-${activityId}`);
+      const activityElement = document.getElementById(`activity-${id}`);
       if (activityElement) {
         activityElement.remove();
         alert("Actividad eliminada:", deletedActivity);
@@ -106,11 +113,18 @@ class Repository {
     } else {
       alert("No se encontró ninguna actividad con el ID especificado.");
     }
-  }
-};
+  };
+
+}
 
 const repository = new Repository();
 
+// Disparador de buttonHandler al hacer click en el boton del form
+document.getElementById('btn_form').addEventListener('click', () => {
+  repository.buttonHandler()
+});
+
+// Codigo para Popup en adelante
 var currentIndex = 0;
 let keydownListener;
 
@@ -181,4 +195,4 @@ function prevSlide() {
   showCarouselItem(currentIndex);
 }
 
-module.exports = { Activity, Repository};
+// module.exports = { Activity, Repository};
