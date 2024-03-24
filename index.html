@@ -40,7 +40,7 @@
                 <img class="pic" src="styles/src/unnamed.png" alt="html">
             </div>
             <div>
-    
+
                 <form class="boxAct" action="" id="activityForm">
                     <h1 class="fullname">Actividades Favoritas</h1>
                     <div class="form_box">
@@ -66,7 +66,7 @@
                 <button type="button" class="btnHistory" onclick="openPopup(0)">Ver actividades agregadas</button>
             </div>
 
-            
+
         </div>
     </div>
 
@@ -76,14 +76,144 @@
         <span class="close" onclick="closePopup()">&times;</span>
         <div class="carousel">
             <button onclick="prevSlide()" class="nav-btn">&lt;</button>
-            <div id="activityCardsContainer">
-            </div>
+            <div id="activityCardsContainer"></div>
             <button onclick="nextSlide()" class="nav-btn">&gt;</button>
         </div>
     </div>
 
-    <script src="./scripts/index.js"></script>
+    <Script>
 
+        const inputTitle = document.getElementById('title');
+        const inputDescription = document.getElementById('description');
+        const inputImg = document.getElementById('imgUrl');
+        const activityCardsContainer = document.getElementById('activityCardsContainer');
+
+        // Estas 2 funciones interactuan directamente con el DOM por lo que no pueden estar
+        // en el archivo js si se pretende ejecutar pruebas con jazmine puro
+        function createTags(activity) {
+            const { id, title, description, imgUrl } = activity;
+
+            const card = document.createElement('div');
+            const titleHtml = document.createElement('h3');
+            const descriptionHtml = document.createElement('p');
+            const imageHtml = document.createElement('img');
+            const deleteBtn = document.createElement('button');
+
+            // Usar map() para crear las tarjetas de actividad
+            card.classList.add('carousel-item');
+            card.classList.add('activity-card');
+            card.id = `activity-${id}`; // Asignar un ID único a cada tarjeta de actividad
+
+            titleHtml.innerHTML = title;
+
+            descriptionHtml.innerHTML = description;
+
+            imageHtml.src = imgUrl;
+            imageHtml.alt = title;
+
+            // Botón de eliminar
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.classList.add('delete_id');
+            deleteBtn.type = 'button';
+            deleteBtn.onclick = () => deleteActivity(id); // Llamar a deleteActivity con el ID de la actividad
+
+            // Agregar elementos a la tarjeta
+            card.appendChild(titleHtml);
+            card.appendChild(descriptionHtml);
+            card.appendChild(imageHtml);
+            card.appendChild(deleteBtn);
+
+            return card;
+        }
+
+        function deleteActivity(id) {
+            const index = repository.activities.findIndex(activity => activity.id === id);
+
+            if (index !== -1) {
+                const deletedActivity = repository.activities.splice(index, 1)[0];
+                const activityElement = document.getElementById(`activity-${id}`);
+                if (activityElement) {
+                    activityElement.remove();
+                    alert("Actividad eliminada:", deletedActivity);
+                }
+            } else {
+                alert("No se encontró ninguna actividad con el ID especificado.");
+            }
+        };
+
+        // Disparador de buttonHandler al hacer click en el boton del form
+        document.getElementById('btn_form').addEventListener('click', () => {
+            repository.buttonHandler();
+        });
+
+        // Codigo para Popup en adelante
+        var currentIndex = 0;
+        let keydownListener;
+        // Obtiene el elemento popup
+        var popup = document.getElementById('popup');
+        // Obtiene el elemento overlay
+        var overlay = document.getElementById('overlay');
+
+        keydownListener = function (event) {
+            if (event.key === 'ArrowLeft') {
+                prevSlide();
+            } else if (event.key === 'ArrowRight') {
+                nextSlide();
+            }
+        };
+
+        function openPopup(index) {
+            // Muestra el popup y el overlay
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+
+            document.addEventListener('keydown', keydownListener);
+
+            // Inicializa el carrusel al abrir el popup
+            showCarouselItem(index);
+        }
+
+        // Función para cerrar el popup
+        function closePopup() {
+            document.removeEventListener('keydown', keydownListener);
+
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Función para mostrar el elemento del carrusel según el índice
+        function showCarouselItem(index) {
+            document.querySelectorAll('.carousel-item').forEach(function (item, i) {
+                if (i === index) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            currentIndex = index; // Actualizar currentIndex
+        }
+
+        // Función para avanzar en el carrusel
+        function nextSlide() {
+            currentIndex++;
+            if (currentIndex >= document.querySelectorAll('.carousel-item').length) {
+                currentIndex = 0;
+            }
+            showCarouselItem(currentIndex);
+        }
+
+        // Función para retroceder en el carrusel
+        function prevSlide() {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = document.querySelectorAll('.carousel-item').length - 1;
+            }
+            showCarouselItem(currentIndex);
+        }
+
+    </Script>
+
+    <script src="./scripts/index.js"></script>
 </body>
 
 </html>
